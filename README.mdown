@@ -1,4 +1,4 @@
-# Ruby version of Pattern-Primer by adactio
+# Ruby (Sinatra) version of Pattern-Primer by adactio
 
 See https://github.com/adactio/Pattern-Primer
 
