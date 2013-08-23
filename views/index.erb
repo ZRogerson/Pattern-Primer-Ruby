@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<title>Design Template</title>
 	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
-
+	<script src='/app.js' type='text/javascript'></script>
 	<link rel="stylesheet" type="text/css" href="http://tera-cdn1.enmasse-game.com/assets/application-91b99cf68a87e17c181d295e2875ab2f.css">
 	<link rel="stylesheet" href="/style.css">
 </head>
@@ -16,41 +16,29 @@
         <li><a href="#" data-name="blockquote">blockquote</a></li>
         <li><a href="#" data-name="blog">blog</a></li>
         <li><a href="#" data-name="blog-teaser">blog-teaser</a></li>
-        <li><a href="#" data-name="button-play">button-play</a></li>
-        <li><a href="#" data-name="button-primary">button-primary</a></li>
-        <li><a href="#" data-name="button-secondary">button-secondary</a></li>
-        <li><a href="#" data-name="content-blocks-alt">content-blocks-alt</a></li>
-        <li><a href="#" data-name="content-blocks-left">content-blocks-left</a></li>
-        <li><a href="#" data-name="content-blocks-right">content-blocks-right</a></li>
-        <li><a href="#" data-name="event-block">event-block</a></li>
+        <li><a href="#" data-name="buttons">buttons</a></li>
+        <li><a href="#" data-name="alt-blocks">alt blocks</a></li>
+        <li><a href="#" data-name="left-blocks">left blocks</a></li>
+        <li><a href="#" data-name="right-blocks">right blocks</a></li>
+        <li><a href="#" data-name="event-blocks">event-block</a></li>
         <li><a href="#" data-name="headings">headings</a></li>
         <li><a href="#" data-name="icons">Icons</a></li>
         <li><a href="#" data-name="item-flags">item-flags</a></li>
         <li><a href="#" data-name="item-icons">item-icons</a></li>
-        <li><a href="#" data-name="leading-icon-medium">leading-icon-medium</a></li>
-        <li><a href="#" data-name="leading-icon-small">leading-icon-small</a></li>
-        <li><a href="#" data-name="list-definition">list-definition</a></li>
-        <li><a href="#" data-name="list-unordered-bullets">list-unordered-bullets</a></li>
-        <li><a href="#" data-name="list-unordered">list-unordered</a></li>
-        <li><a href="#" data-name="Site-wide-alerts">Site-wide-alerts</a></li>
+        <li><a href="#" data-name="icon-blocks">icon-blocks</a></li>
+        <li><a href="#" data-name="list-definition">list definition</a></li>
+        <li><a href="#" data-name="alerts">Site Wide Alerts</a></li>
         <li><a href="#" data-name="tables">tables</a></li>
         <li><a href="#" data-name="link-tables">link tables</a></li>
       </ul>
     </div>
 
-    <div class="pattern-right">
-			<% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
-			<% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
-				<div class="pattern">
-					<div class="display">
-						<%= File.read(File.join('patterns/', fname)) %>
-					</div>
-					<div class="source">
-						<textarea rows="6" cols="30"><%= File.read(File.join('patterns/', fname)) %></textarea>
-					</div>
-				</div>
-			<% end %>
-		</div>
+		<% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
+		<% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
+			<div class="pattern-right" id="pattern-<%= fname.gsub(/\.html/, '') %>">
+				<%= File.read(File.join('patterns/', fname)) %>
+			</div>
+		<% end %>
 	</div>	
 </body>
 </html>

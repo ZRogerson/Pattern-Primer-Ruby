@@ -7,6 +7,9 @@ $(document).ready(function(){
       e.preventDefault();
       block = $(this).find('a').attr('data-name');
       $('.pattern-right').css('display', 'none');
+
+console.log($('#pattern-' + block));
+
       $('#pattern-' + block).css('display', 'block');
     })
   })
