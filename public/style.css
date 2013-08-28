@@ -1,7 +1,6 @@
 /* Global */
   .clear { clear: both; }
   body {
-    background: black url("/assets/background-slate.jpg") no-repeat top center;
     position: absolute;
     top: 0;
     right: 0;
