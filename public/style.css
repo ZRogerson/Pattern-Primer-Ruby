@@ -30,6 +30,7 @@
     border-left: none;
     border-right: none;
   }
+  .pattern-wrapper .pattern-left li a { text-transform: capitalize; }
   .pattern-wrapper .pattern-left li:hover { background-color: #525252; }
   .pattern-wrapper .pattern-left li:hover a {
     color: white;

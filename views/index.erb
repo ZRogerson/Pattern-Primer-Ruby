@@ -10,35 +10,20 @@
 <body>
 	<div class="pattern-wrapper">
 		<div class="pattern-left">
-      <ul id="pattern-nav">
-        <li><a href="#" data-name="colors">colors</a></li>
-        <li><a href="#" data-name="accordion">accordion</a></li>
-        <li><a href="#" data-name="blockquote">blockquote</a></li>
-        <li><a href="#" data-name="blog">blog</a></li>
-        <li><a href="#" data-name="blog-teaser">blog-teaser</a></li>
-        <li><a href="#" data-name="buttons">buttons</a></li>
-        <li><a href="#" data-name="alt-blocks">alt blocks</a></li>
-        <li><a href="#" data-name="left-blocks">left blocks</a></li>
-        <li><a href="#" data-name="right-blocks">right blocks</a></li>
-        <li><a href="#" data-name="event-blocks">event-block</a></li>
-        <li><a href="#" data-name="headings">headings</a></li>
-        <li><a href="#" data-name="icons">Icons</a></li>
-        <li><a href="#" data-name="item-flags">item-flags</a></li>
-        <li><a href="#" data-name="item-icons">item-icons</a></li>
-        <li><a href="#" data-name="icon-blocks">icon-blocks</a></li>
-        <li><a href="#" data-name="list-definition">list definition</a></li>
-        <li><a href="#" data-name="alerts">Site Wide Alerts</a></li>
-        <li><a href="#" data-name="tables">tables</a></li>
-        <li><a href="#" data-name="link-tables">link tables</a></li>
-      </ul>
-    </div>
+          <ul id="pattern-nav">
+            <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
+            <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
+                <li><a href="#" data-name="<%= fname.gsub(/\.html/, '') %>"><%= fname.gsub(/\.html/, '').gsub(/\-/, ' ') %></a></li>
+            <% end %>
+          </ul>
+        </div>
 
-		<% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
-		<% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
-			<div class="pattern-right" id="pattern-<%= fname.gsub(/\.html/, '') %>">
-				<%= File.read(File.join('patterns/', fname)) %>
-			</div>
-		<% end %>
+    	<% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
+    	<% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
+    		<div class="pattern-right" id="pattern-<%= fname.gsub(/\.html/, '') %>">
+    			<%= File.read(File.join('patterns/', fname)) %>
+    		</div>
+    	<% end %>
 	</div>	
 </body>
 </html>
