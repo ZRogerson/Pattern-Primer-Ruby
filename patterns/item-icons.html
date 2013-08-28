@@ -3,15 +3,12 @@
     window.onload = function(){
       var iconTitle, iconClass, iconShort,
           iconBlock = $('#pattern-item-icons li');
-
       function copyToClipboard (text) {
         text = '<div class="' + text + '"></div>'
-
         window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
       }
 
       $.each(iconBlock, function(){
-
         $(this).bind('click', function(){
           $('#pattern-item-icons li').removeClass('active');
           $(this).addClass('active');
@@ -70,7 +67,7 @@
       border: 1px solid black;
       margin: 0 10px 0 0;
       float: left;
-      background: url(/assets/store-sprite.png) no-repeat 100px 100px;
+      background: url(http://tera-cdn0.enmasse-game.com/assets/store-sprite.png) no-repeat 100px 100px;
     }
     #pattern-item-icons #icon-show:after {
       content: "";
@@ -99,12 +96,12 @@
     #pattern-item-icons #icon-panel #copy {
       display: inline-block;
       float:right;
-      width: 26px;
-      height: 16px;
-      line-height: 26px;
-      font-size: 26px;
+      padding:0px 3px;
+      font-size: 16px;
+      color: #0297FF;
       cursor: pointer; cursor: hand;
     }
+    #pattern-item-icons #icon-panel #copy:hover { color: white; }
     #pattern-item-icons ul { margin-top: 110px; text-align: center; }
     #pattern-item-icons ul > li {
       display: inline-block;
@@ -127,7 +124,7 @@
       <div id="icon-show"></div>
       <table>
         <tr>
-          <td><span id="copy">+</span><p id="icon-title" class="title-bar-dark">Title</p></td>
+          <td><span id="copy">copy</span><p id="icon-title" class="title-bar-dark">Title</p></td>
         </tr>
         <tr>
           <td><p>Class Name: <span id="icon-class"></span></p></td>
