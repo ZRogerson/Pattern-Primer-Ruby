@@ -10,4 +10,5 @@ $(document).ready(function(){
       $('#pattern-' + block).css('display', 'block');
     })
   })
+  $('#pattern-guide').css('display', 'block');
 })

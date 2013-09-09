@@ -1,42 +1,32 @@
 <!DOCTYPE html>
 <head>
-	<meta charset="utf-8">
-	<title>Design Template</title>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
-	<script src='/app.js' type='text/javascript'></script>
-	<link rel="stylesheet" type="text/css" href="http://tera-cdn1.enmasse-game.com/assets/application-91b99cf68a87e17c181d295e2875ab2f.css">
-	<link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8">
+  <title>Design Template</title>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+  <script src='/app.js' type='text/javascript'></script>
+  <link rel="stylesheet" type="text/css" href="http://tera-cdn1.enmasse-game.com/assets/application.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-	<div class="pattern-wrapper">
-		<div class="pattern-left">
-          <ul id="pattern-nav">
-            <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
-            <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
-                <li><a href="#" data-name="<%= fname.gsub(/\.html/, '') %>"><%= fname.gsub(/\.html/, '').gsub(/\-/, ' ') %></a></li>
-            <% end %>
-          </ul>
-        </div>
+  <div class="pattern-wrapper">
+    <div class="pattern-left">
+      <ul id="pattern-nav">
+        <li><a href="#" data-name="guide">Style Guide</a></li>
+        <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
+        <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
+            <li><a href="#" data-name="<%= fname.gsub(/\.html/, '') %>"><%= fname.gsub(/\.html/, '').gsub(/\-/, ' ') %></a></li>
+        <% end %>
+      </ul>
+    </div>
 
-    	<% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
-    	<% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
-    		<div class="pattern-right" id="pattern-<%= fname.gsub(/\.html/, '') %>">
-    			<%= File.read(File.join('patterns/', fname)) %>
-    		</div>
-    	<% end %>
-	</div>	
+    <%= File.read(File.join('guides/guide.html')) %>
+
+    <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
+      <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
+      <div class="pattern-right" id="pattern-<%= fname.gsub(/\.html/, '') %>">
+        <%= File.read(File.join('patterns/', fname)) %>
+      </div>
+    <% end %>
+  </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
