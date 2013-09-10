@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var links = $('#pattern-nav').find('li'),
+  var links = $('#nav').find('li'),
   block;
 
   $.each(links, function(){

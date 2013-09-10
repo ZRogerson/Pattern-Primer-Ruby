@@ -9,24 +9,25 @@
 </head>
 <body>
   <div class="pattern-wrapper">
-    <div class="pattern-left">
-      <ul id="pattern-nav">
-        <li><a href="#" data-name="guide">Style Guide</a></li>
-        <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
+    <ul id="nav">
+      <li><a href="#" data-name="guide">Style Guide</a></li>
+      <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
+      <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
+          <li><a href="#" data-name="<%= fname.gsub(/\.html/, '') %>"><%= fname.gsub(/\.html/, '').gsub(/\-/, ' ') %></a></li>
+      <% end %>
+    </ul>
+
+    <div id="viewer">
+      <%= File.read(File.join('guides/guide.html')) %>
+
+      <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
         <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
-            <li><a href="#" data-name="<%= fname.gsub(/\.html/, '') %>"><%= fname.gsub(/\.html/, '').gsub(/\-/, ' ') %></a></li>
-        <% end %>
-      </ul>
+        <div class="pattern-right" id="pattern-<%= fname.gsub(/\.html/, '') %>">
+          <%= File.read(File.join('patterns/', fname)) %>
+        </div>
+      <% end %>
     </div>
 
-    <%= File.read(File.join('guides/guide.html')) %>
-
-    <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
-      <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
-      <div class="pattern-right" id="pattern-<%= fname.gsub(/\.html/, '') %>">
-        <%= File.read(File.join('patterns/', fname)) %>
-      </div>
-    <% end %>
   </div>
 </body>
 </html>
