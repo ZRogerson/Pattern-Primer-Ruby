@@ -10,7 +10,6 @@
 <body>
   <div class="pattern-wrapper">
     <ul id="nav">
-      <li><a href="#" data-name="guide">Style Guide</a></li>
       <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
       <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
           <li><a href="#" data-name="<%= fname.gsub(/\.html/, '') %>"><%= fname.gsub(/\.html/, '').gsub(/\-/, ' ') %></a></li>
@@ -18,8 +17,6 @@
     </ul>
 
     <div id="viewer">
-      <%= File.read(File.join('guides/guide.html')) %>
-
       <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
         <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
         <div class="pattern-right" id="pattern-<%= fname.gsub(/\.html/, '') %>">
