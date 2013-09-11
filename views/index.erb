@@ -11,11 +11,11 @@
     <%= File.read(File.join('public/style.css')) %>
   </style>
 </head>
-<body class="nav">
+<body>
   <div class="pattern-wrapper">
     <div id="controls">
       <ul>
-        <li id="toggle-nav" class="active">
+        <li id="toggle-nav">
           <span class="popup menu">Show Navigation</span>
           <span class="popup all">Show Full Page</span>
         </li>
@@ -31,7 +31,7 @@
     </ul>
 
     <div id="viewer">
-      <div class="pattern-right" id="pattern-home">
+      <div class="pattern" id="pattern-home">
         <style type="text/css">
           .pattern-wrapper #pattern-home .preview { right: 0; }
           .pattern-wrapper #pattern-home .preview > h3 {
@@ -79,7 +79,7 @@
 
       <% Dir.foreach(Dir.pwd + '/patterns/') do |fname| %>
         <% next if fname == '.' or fname == '..' or fname == '.DS_Store' %>
-        <div class="pattern-right" id="pattern-<%= fname.gsub(/\.html/, '') %>">
+        <div class="pattern" id="pattern-<%= fname.gsub(/\.html/, '') %>">
           <%= File.read(File.join('patterns/', fname)) %>
         </div>
       <% end %>

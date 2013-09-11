@@ -1,6 +1,16 @@
 $(document).ready(function(){
   var links = $('#menu').find('li'),
-  block;
+  block, state = true;
+
+  showFull = function(){
+    state = true;
+    $('body').removeClass('nav');
+    $('.pattern').removeAttr('style');
+  }
+  showMenu = function(){
+    state = false;
+    $('body').addClass('nav');
+  }
 
   $.each(links, function(){
     $(this).bind('click', function(e){
@@ -8,18 +18,12 @@ $(document).ready(function(){
       $(this).addClass('active');
       e.preventDefault();
       block = $(this).find('a').attr('data-name');
-      $('.pattern-right').css('display', 'none');
+      $('.pattern').css('display', 'none');
       $('#pattern-' + block).css('display', 'block');
     })
   })
-  $('#pattern-home').css('display', 'block');
 
-  $('#controls #toggle-nav').bind('click', function(){
-    if ( !$(this).hasClass('active') ) {
-      location.reload();
-    }
-    $('body').removeClass('nav');
-    $('.pattern-right').css('display', 'block');
-    $(this).removeClass('active');
+  $('#toggle-nav').bind('click', function(){
+    (state) ? showMenu() : showFull();
   })
 })

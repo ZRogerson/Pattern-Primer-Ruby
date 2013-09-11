@@ -9,33 +9,10 @@
     left: 0;
   }
 /* Navigation */
-  #menu {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    border-right: 2px inset #FFFFFF;
-    overflow: auto;
-    margin: 0;
-    text-align: right;
-  }
-  .nav #menu {
-    width: 150px;
-  }
-  #menu li {
-    padding: 3px 10px;
-    border: 1px solid #FFFFFF;
-    border-left: none;
-  }
-  #menu li:first-child {  }
-  #menu li a { text-transform: capitalize; }
-  #menu li.active { background-color: #4b4f56; }
-  #menu li.active a { color: #FFFFFF; }
-  #menu li:hover { background-color: #4b4f56; }
-  #menu li:hover a {
-    color: #FFFFFF;
-    text-decoration: none;
+  #menu { display: none; }
+  #viewer {
+    position: relative;
+    margin-right: 50px;
   }
 /* Controls */
   #controls {
@@ -45,7 +22,7 @@
     bottom: 0;
     width: 50px;
     background-color: #4b4f56;
-    z-index: 0;
+    z-index: 1;
   }
   #controls li {
     position: relative;
@@ -82,259 +59,184 @@
     width: 130px;
     left: -132px;
   }
-
-/* view port */
-  #viewer {
+/* patterns */
+  .pattern {
     position: relative;
-    margin-right: 50px;
-    z-index: 0;
-  }
-  #viewer .pattern-right {
-    position: relative;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 10px;
     margin: 10px 0;
-    padding: 10px;
-    border-top: 1px solid #1C9509
   }
-  #viewer .pattern-right:first-child { border: none; }
-  #viewer .pattern-right:after {
-    content: "";
-    display: block;
-    clear: both;
+  .pattern:first-child { border-top: none; }
+  .padding:last-child { border-bottom: none; }
+
+  .pattern .preview {
+    width: 49%;
   }
-  #viewer .preview, #viewer .code { width: 49%; }
-  #viewer .preview { float: left; }
-  #viewer .code { float: right; }
-  .nav #viewer {
+  .pattern .code {
     position: absolute;
     top: 0;
-    right: 50px;
-    bottom: 0;
-    left: 150px;
-    overflow: auto;
-    margin-right: 0;
-  }
-  .nav #viewer .pattern-right {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
     right: 0;
-    display: none;
-    border: none;
-    margin: 0;
-  }
-  .nav #viewer .preview {
-    position: absolute;
-    top: 0;
     bottom: 0;
-    left: 0;
-    right: 50%;
-    border-right: 2px inset white;
-    padding: 10px;
-    overflow: auto;
-    float: none;
+    width: 49%;
+    border-left: 1px solid #FFFFFF;
   }
-  #viewer .code {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    right: 0;
-  }
-  #viewer .code textarea {
+  .pattern .code textarea {
+    position: relative;
     width: 100%;
     height: 100%;
     background: #525252;
     color: white;
   }
+/* Pattern Specific */
+  #pattern-home .preview { width: 100%; }
+  #pattern-colors .colors { width: 100%; height: 350px; }
+  #pattern-colors .colors ul { float: left; margin: 10px; }
+  #pattern-colors .colors li { width: 250px; padding: 5px 10px; }
+  #pattern-colors .colors li span { float: right; }
+  #pattern-form-buttons .preview { width: 100%; }
+  #pattern-form-fields .preview { width: 100%; }
+  /* global icons */
+  #pattern-icons .preview { width: 100%; height: 600px; }
+  #pattern-icons li {
+    float: left;
+    width: 49%;
+    height: 80px;
+    border: 1px solid #DDD;
+    padding: 20px 0;
+  }
+  #pattern-icons .preview div {
+    float:left;
+    width: 100px;
+    text-align: center;
+  }
+  #pattern-icons input {
+    float: left;
+    width: 300px;
+  }
+  /* item flags */
+  #pattern-item-flags .item-info { border: none; }
+  #pattern-item-flags .item-alert {
+    position: relative;
+    margin-top: 20px;
+  }
+  /* Store Item Icons */
+  .pattern-wrapper #pattern-item-icons .preview {
+    width: 100%;
+    padding-top: 10px;
+  }
+  #pattern-item-icons #icon-panel {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    left: 50%;
+    border: 1px solid #4b4f56;
+    border-top: none;
+    width: 800px;
+    height: 110px;
+    margin-left: -400px;
+    padding: 10px 60px;
+    background: rgba(48, 52, 59, 1.0);
+    -webkit-border-bottom-right-radius: 60px;
+    -webkit-border-bottom-left-radius: 60px;
+    -moz-border-radius-bottomright: 60px;
+    -moz-border-radius-bottomleft: 60px;
+    border-bottom-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+  }
+  #pattern-item-icons #icon-show {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 75px;
+    height: 75px;
+    position: relative;
+    border: 1px solid black;
+    margin: 0 10px 0 0;
+    float: left;
+    background: url(http://tera-cdn0.enmasse-game.com/assets/store-sprite.png) no-repeat 100px 100px;
+  }
+  #pattern-item-icons #icon-show:after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    border: 2px solid #4b4f56;
+    width:79px;
+    height:79px;
+  }
+  #pattern-item-icons #icon-panel table {
+    float: left;
+    width: 590px;
+    border: 1px solid #4b4f56;
+  }
+  #pattern-item-icons #icon-panel table td { padding: 3px 10px; }
+  #pattern-item-icons #icon-panel table tr:first-child td { padding: 0; }
+  #pattern-item-icons #icon-panel table td p { margin: 0; }
+  #pattern-item-icons #icon-panel table td span { float:right; }
+  #pattern-item-icons #icon-panel #icon-title {
+    text-align: center;
+    text-transform: capitalize;
+    padding: 0;
+    margin: 0;
+  }
+  #pattern-item-icons #icon-panel #copy {
+    display: inline-block;
+    float:right;
+    padding:0px 3px;
+    font-size: 16px;
+    color: #0297FF;
+    cursor: pointer; cursor: hand;
+  }
+  #pattern-item-icons #icon-panel #copy:hover { color: white; }
+  #pattern-item-icons ul { margin-top: 110px; text-align: center; }
+  #pattern-item-icons ul > li {
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #4b4f56;
+    background: rgba(48, 52, 59, 0.5);
+    padding: 5px;
+    margin: 5px;
+  }
+  #pattern-item-icons ul > li.active {
+    border: 1px solid #960909;
+    background: rgba(255, 110, 66, 0.5);
+  }
+  #pattern-item-icons ul > li:hover { border:1px solid #0297FF; }
+  #pattern-item-icons ul > li:active { background: rgba(29, 33, 40, 0.5); }
+  #pattern-media .preview { width: 100%; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* section specific */
-#pattern-accordion .accordion { width: 350px; }
-#pattern-blockquote blockquote { width: 350px; }
-
-#pattern-blog-teaser #body_content_left {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.075)), color-stop(100%, rgba(255, 255, 255, 0.05)));
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.05));
-  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.05));
-  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.05));
-  background-image: linear-gradient(rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.05));
-  border-right: 1px solid #444444;
-  border-top: 1px solid #444444;
-  height: 327px;
-  width: 769px;
-}
-#pattern-blog #body_content_left {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.075)), color-stop(100%, rgba(255, 255, 255, 0.05)));
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.05));
-  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.05));
-  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.05));
-  background-image: linear-gradient(rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.05));
-  border-right: 1px solid #444444;
-  border-top: 1px solid #444444;
-  height: 327px;
-  width: 769px;
-}
-#viewer #pattern-breadcrumbs .preview { right: 0; }
-#pattern-button-primary a.button-primary {
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  margin-left: -100px;
-}
-#pattern-button-secondary a.button-secondary {
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  margin-left: -100px;
-}
-#viewer #pattern-colors .preview { right: 0; }
-.pattern-wrapper .colors ul { float: left; margin: 10px; }
-.pattern-wrapper .colors li { width: 250px; padding: 5px 10px; }
-.pattern-wrapper .colors li span { float: right; }
-
-#viewer #pattern-form-buttons .preview { right: 0; }
-#viewer #pattern-form-fields .preview { right: 0; }
-#viewer #pattern-headings .preview > h1 { border-bottom: 1px solid #FFFFFF; }
-.pattern-wrapper #pattern-icons .preview { right: 0; }
-.pattern-wrapper #pattern-icons li {
-  float: left;
-  width: 49%;
-  height: 80px;
-  border: 1px solid #DDD;
-  padding: 20px 0;
-}
-.pattern-wrapper #pattern-icons .preview div {
-  float:left;
-  width: 100px;
-  text-align: center;
-}
-.pattern-wrapper #pattern-icons input {
-  float: left;
-  width: 300px;
-}
-#pattern-item-flags .item-info { border: none; }
-#pattern-item-flags .item-alert {
-  position: relative;
-  margin-top: 20px;
-}
-
-
-/*icons*/
-.pattern-wrapper #pattern-item-icons .preview {
-  right: 0;
-  padding-top: 10px;
-}
-#pattern-item-icons #icon-panel {
-  position: absolute;
-  top: 0;
-  z-index: 10;
-  left: 50%;
-  border: 1px solid #4b4f56;
-  border-top: none;
-  width: 800px;
-  height: 110px;
-  margin-left: -300px;
-  padding: 10px 60px;
-  background: rgba(48, 52, 59, 1.0);
-  -webkit-border-bottom-right-radius: 60px;
-  -webkit-border-bottom-left-radius: 60px;
-  -moz-border-radius-bottomright: 60px;
-  -moz-border-radius-bottomleft: 60px;
-  border-bottom-right-radius: 60px;
-  border-bottom-left-radius: 60px;
-}
-#pattern-item-icons #icon-show {
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  width: 75px;
-  height: 75px;
-  position: relative;
-  border: 1px solid black;
-  margin: 0 10px 0 0;
-  float: left;
-  background: url(http://tera-cdn0.enmasse-game.com/assets/store-sprite.png) no-repeat 100px 100px;
-}
-#pattern-item-icons #icon-show:after {
-  content: "";
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  border: 2px solid #4b4f56;
-  width:79px;
-  height:79px;
-}
-#pattern-item-icons #icon-panel table {
-  float: left;
-  width: 590px;
-  border: 1px solid #4b4f56;
-}
-#pattern-item-icons #icon-panel table td { padding: 3px 10px; }
-#pattern-item-icons #icon-panel table tr:first-child td { padding: 0; }
-#pattern-item-icons #icon-panel table td p { margin: 0; }
-#pattern-item-icons #icon-panel table td span { float:right; }
-#pattern-item-icons #icon-panel #icon-title {
-  text-align: center;
-  text-transform: capitalize;
-  padding: 0;
-  margin: 0;
-}
-#pattern-item-icons #icon-panel #copy {
-  display: inline-block;
-  float:right;
-  padding:0px 3px;
-  font-size: 16px;
-  color: #0297FF;
-  cursor: pointer; cursor: hand;
-}
-#pattern-item-icons #icon-panel #copy:hover { color: white; }
-#pattern-item-icons ul { margin-top: 110px; text-align: center; }
-#pattern-item-icons ul > li {
-  display: inline-block;
-  text-align: center;
-  border: 1px solid #4b4f56;
-  background: rgba(48, 52, 59, 0.5);
-  padding: 5px;
-  margin: 5px;
-}
-#pattern-item-icons ul > li.active {
-  border: 1px solid #960909;
-  background: rgba(255, 110, 66, 0.5);
-}
-#pattern-item-icons ul > li:hover { border:1px solid #0297FF; }
-#pattern-item-icons ul > li:active { background: rgba(29, 33, 40, 0.5); }
-/**/
-
-#viewer .preview > h3 { border-bottom: 1px solid #DDDDDD; }
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* with navigation */
+  .nav #menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    border-right: 2px inset #FFFFFF;
+    overflow: auto;
+    margin: 0;
+    text-align: right;
+  }
+  .nav #menu li {
+    padding: 3px 10px;
+    border: 1px solid #FFFFFF;
+    border-left: none;
+  }
+  .nav #menu li:first-child {  }
+  .nav #menu li a { text-transform: capitalize; }
+  .nav #menu li.active { background-color: #4b4f56; }
+  .nav #menu li.active a { color: #FFFFFF; }
+  .nav #menu li:hover { background-color: #4b4f56; }
+  .nav #menu li:hover a {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  .nav #viewer { margin-left: 150px; }
+  .nav .pattern {
+    display: none;
+    position: relative;
+  }
+  .nav .pattern:first-child { display: block; }
+  
