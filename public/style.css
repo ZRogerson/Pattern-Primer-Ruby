@@ -30,7 +30,7 @@
     height: 40px;
     margin: 5px;
     border: 2px outset #30343b;
-    background: #30343b url('/images/icons.png') no-repeat 0 0;
+    background: #30343b url('/assets/pattern-icons.png') no-repeat 0 0;
   }
   #controls li span {
     display: none;
