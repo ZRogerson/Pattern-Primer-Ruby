@@ -9,6 +9,7 @@ $(document).ready(function(){
   }
   showMenu = function(){
     state = false;
+    $('html, body').animate({scrollTop: '0px'}, 300);
     $('body').addClass('nav');
   }
 
