@@ -27,10 +27,4 @@ $(document).ready(function(){
   $('#toggle-nav').bind('click', function(){
     (state) ? showMenu() : showFull();
   })
-
-
-
-  // $('#toggle-nav').trigger('click');
-  // $('.pattern').css('display', 'none');
-  // $('#pattern-form-buttons').css('display', 'block');
 })
