@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var links = $('#menu').find('li'),
-  block, state = true;
+  block, state = false;
 
   showFull = function(){
     state = true;
